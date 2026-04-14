@@ -10,17 +10,18 @@ import {
   faHeadset,
 } from '@fortawesome/free-solid-svg-icons'
 import FeatureCarousel from './FeatureCarousel'
+import CRMFeatureTabs from './Featurestabs'
 
 export default function HeroSection() {
   return (
-    <section className="bg-gradient-to-b from-white via-blue-50 to-gray-50">
+    <section className="bg-white">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10"></div>
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 pb-20 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-12 pb-0 relative overflow-hidden">
         {/* Top Section - Heading & CTA */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           {/* AI Powered Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-200 bg-blue-50 mb-8">
             <span className="text-sm font-medium text-blue-600">AI Powered</span>
@@ -58,7 +59,8 @@ export default function HeroSection() {
           {/* No Credit Card Text */}
           <p className="text-sm text-gray-500">No Credit Card Required</p>
         </div>
-        <FeatureCarousel />
+        {/* <FeatureCarousel /> */}
+        <CRMFeatureTabs />
       </div>
     </section>
   )

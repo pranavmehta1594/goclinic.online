@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -57,6 +57,16 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const toggleDropdown = (label: string) => {
     setOpenDropdown(openDropdown === label ? null : label)
@@ -67,8 +77,12 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white shadow-md w-full' : 'bg-transparent w-full'
+    }`}>
+      <nav className={`mx-auto px-4 sm:px-6 lg:px-8 ${
+        isScrolled ? 'max-w-full' : 'max-w-6xl'
+      }`}>
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
